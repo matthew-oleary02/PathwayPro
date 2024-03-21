@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask HTML App</title>
+    <title>PathwayPro - Home</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>PathwayPro</h1>
     <p> Our proposed system is a user-friendly application named “PathwayPro” that will help students plan their courses, 
         track their progress, and access important academic information. This idea centers around creating a resource app 
         designed to empower and support higher education students throughout their academic journey. </p>
+
+    <div class="container">
+        <h2>Login</h2>
+
+        <label for="courseType">Select Log In Type:</label>
+        <select id="courseType">
+            <option value="student">Student</option>
+            <option value="advisor">Advisor</option>
+            <option value="employer">Employer</option>
+        </select>
+
+        <div id="courseInfo">
+            <input type="text" id="username" placeholder="Username">
+            <input type="text" id="password" placeholder="Password">
+        </div>        
+
+        <button onclick="SignIn()">Sign In</button>
+    </div>
 </body>
 </html>
