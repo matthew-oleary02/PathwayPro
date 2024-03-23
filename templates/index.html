@@ -7,27 +7,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>PathwayPro</h1>
-    <p> Our proposed system is a user-friendly application named “PathwayPro” that will help students plan their courses, 
-        track their progress, and access important academic information. This idea centers around creating a resource app 
-        designed to empower and support higher education students throughout their academic journey. </p>
-
     <div class="container">
-        <h2>Login</h2>
+        <h1>PathwayPro</h1>
+        <p>Our proposed system is a user-friendly application named “PathwayPro” that will help students plan their courses, 
+            track their progress, and access important academic information. This idea centers around creating a resource app 
+            designed to empower and support higher education students throughout their academic journey.</p>
 
-        <label for="courseType">Select Log In Type:</label>
-        <select id="courseType">
-            <option value="student">Student</option>
-            <option value="advisor">Advisor</option>
-            <option value="employer">Employer</option>
-        </select>
+        <div class="form-container">
+            <h2>Login</h2>
 
-        <div id="courseInfo">
-            <input type="text" id="username" placeholder="Username">
-            <input type="text" id="password" placeholder="Password">
-        </div>        
+            <label for="courseType">Select Log In Type:</label>
+            <select id="courseType">
+                <option value="student">Student</option>
+                <option value="advisor">Advisor</option>
+                <option value="employer">Employer</option>
+            </select>
 
-        <button onclick="SignIn()">Sign In</button>
+            <div id="courseInfo">
+                <input type="text" id="username" placeholder="Username">
+                <input type="text" id="password" placeholder="Password">
+            </div>        
+
+            <button onclick="SignIn()">Sign In</button>
+        </div>
     </div>
 </body>
 </html>
