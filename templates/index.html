@@ -4,30 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PathwayPro - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function signIn() {
+            var userType = document.getElementById("userType").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            document.getElementById("selectedUserType").value = userType;
+        }
+    </script>
 </head>
 <body>
-    <h1>PathwayPro</h1>
-    <p> Our proposed system is a user-friendly application named “PathwayPro” that will help students plan their courses, 
-        track their progress, and access important academic information. This idea centers around creating a resource app 
-        designed to empower and support higher education students throughout their academic journey. </p>
-
     <div class="container">
-        <h2>Login</h2>
+        <h1>PathwayPro</h1>
+        <p>Our proposed system is a user-friendly application named “PathwayPro” that will help students plan their courses, 
+            track their progress, and access important academic information. This idea centers around creating a resource app 
+            designed to empower and support higher education students throughout their academic journey.</p>
 
-        <label for="courseType">Select Log In Type:</label>
-        <select id="courseType">
-            <option value="student">Student</option>
-            <option value="advisor">Advisor</option>
-            <option value="employer">Employer</option>
-        </select>
+        <div class="form-container">
+            <h2>Login</h2>
+            <form id="loginForm" action="/dashboard" method="POST" onsubmit="signIn()">
+                <input type="hidden" id="selectedUserType" name="user_type" value="">
+                <label for="userType">Select Log In Type:</label>
+                <select id="userType">
+                    <option value="student">Student</option>
+                    <option value="advisor">Advisor</option>
+                    <option value="employer">Employer</option>
+                </select>
 
-        <div id="courseInfo">
-            <input type="text" id="username" placeholder="Username">
-            <input type="text" id="password" placeholder="Password">
-        </div>        
+                <div id="courseInfo">
+                    <input type="text" id="username" name="username" placeholder="Username">
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>        
 
-        <button onclick="SignIn()">Sign In</button>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
     </div>
+    
+    <footer>
+        <h3>PathwayPro v0.1</h3>
+    </footer>
 </body>
 </html>
