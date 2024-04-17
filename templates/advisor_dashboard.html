@@ -5,9 +5,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advisor Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .tab-container {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .tab {
+            flex-grow: 1;
+            text-align: center;
+            padding: 10px 0;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab.active {
+            background-color: #007bff;
+        }
+        .chat-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            height: 300px;
+            overflow-y: scroll;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+        }
+        .chat-message.me {
+            text-align: right;
+        }
+        .chat-message.other {
+            text-align: left;
+        }
+        .chat-input {
+            display: flex;
+            margin-top: 10px;
+        }
+        .chat-input input[type="text"] {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+        .chat-input button {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome, Advisor!</h1>
-    
+
+    <div class="tab-container">
+        <div class="tab" onclick="selectTab('search')" data-tab="search">Search for Students</div>
+        <div class="tab active" onclick="selectTab('chat')" data-tab="chat">Student Chat Window</div>
+        <div class="tab" onclick="selectTab('recruited')" data-tab="recruited">Upcoming Appointments</div>
+    </div>
+
+    <!-- Placeholder content for each tab -->
+    <div id="searchContent" style="display: none;">
+        <!-- Content for 'Search for Students' tab goes here -->
+        <div class="search-bar">
+            <select id="university">
+                <option value="">Select University</option>
+                <option value="Fairfield University">Fairfield University</option>
+            </select>
+            <select id="semester">
+                <option value="">Select Semester</option>
+                <option value="1">1 (Freshman)</option>
+                <option value="2">2 (Freshman)</option>
+                <option value="3">3 (Sophomore)</option>
+                <option value="4">4 (Sophomore)</option>
+                <option value="5">5 (Junior)</option>
+                <option value="6">6 (Junior)</option>
+                <option value="7">7 (Senior)</option>
+                <option value="8">8 (Senior)</option>
+                <option value="9">9 (First Grad Year)</option>
+                <option value="10">10 (First Grad Year)</option>
+                <option value="11">11 (Second Grad Year)</option>
+                <option value="12">12 (Second Grad Year)</option>
+            </select>
+            <select id="major">
+                <option value="">Select Major</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Business">Business</option>
+                <option value="Accounting">Accounting</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Communication">Communication</option>
+                <option value="Math">Math</option>
+                <option value="English">English</option>
+                <option value="Pre-Med">Pre-Med</option>
+                <option value="More to Come!">More to Come!</option>
+            </select>
+            <button onclick="searchStudents()">Search</button>
+        </div>
+    </div>
+    <div id="chatContent" style="display: block;">
+        <!-- Content for 'Student Chat Window' tab goes here -->
+        <div class="chat-container" id="chatContainer"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <div id="recruitedContent" style="display: none;">
+        <!-- Content for 'Recruited Students List' tab goes here -->
+        <p>Content for Upcoming Appointments Tab.</p>
+    </div>
+
+    <script>
+        // Function to handle tab selection
+        function selectTab(tabName) {
+            // Hide all tab contents
+            var tabContents = document.querySelectorAll('[id$="Content"]');
+            tabContents.forEach(function(content) {
+                content.style.display = 'none';
+            });
+
+            // Deactivate all tabs
+            var tabs = document.querySelectorAll('.tab');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+
+            // Activate the selected tab
+            var selectedTab = document.querySelector('.tab[data-tab="' + tabName + '"]');
+            selectedTab.classList.add('active');
+
+            // Show the corresponding tab content
+            var selectedContent = document.getElementById(tabName + 'Content');
+            selectedContent.style.display = 'block';
+        }
+
+        // Function to display mock chat
+        function displayMockChat() {
+            var chatContainer = document.getElementById('chatContainer');
+            var messages = [
+                "Hello, this is your advisor, Jane Smith. I was hoping to talk to you about your plan for the upcoming semester.",
+                "Hello Jane, I'm happy to talk to you about my plan. Is there anything specific that you had questions about?",
+                "Yes, I was wondering why you chose that religion course in particular. Other than that, the rest of the schedule looks good.",
+                "I mostly chose that religion course due to it fulfilling a lot of my Magis Core requirements, in addition to the topic seeming interesting to me."
+            ];
+
+            messages.forEach(function(message, index) {
+                var messageDiv = document.createElement('div');
+                messageDiv.classList.add('chat-message');
+                messageDiv.classList.add(index % 2 === 0 ? 'other' : 'me');
+                messageDiv.textContent = message;
+                chatContainer.appendChild(messageDiv);
+            });
+        }
+
+        // Function to send message
+        function sendMessage() {
+            var messageInput = document.getElementById('messageInput').value;
+            var chatContainer = document.getElementById('chatContainer');
+            var messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message');
+            messageDiv.classList.add('me');
+            messageDiv.textContent = messageInput;
+            chatContainer.appendChild(messageDiv);
+            // Display mock chat after sending message
+            displayMockChat();
+            // Clear input after sending message
+            document.getElementById('messageInput').value = '';
+        }
+    </script>
 </body>
 </html>
