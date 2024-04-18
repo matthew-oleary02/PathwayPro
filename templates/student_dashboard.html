@@ -4,10 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='support_dashboard.css') }}">
 </head>
 <body>
     <h1>Welcome, Student!</h1>
-    
+
+    <div class="tab-container">
+        <div class="tab" onclick="selectTab('academic')" data-tab="academic">Academic Progress</div>
+        <div class="tab active" onclick="selectTab('chat')" data-tab="chat">Advisor Chat Window</div>
+        <div class="tab" onclick="selectTab('courses')" data-tab="courses">Enrolled Courses</div>
+    </div>
+
+    <!-- Placeholder content for each tab -->
+    <div id="academicContent" style="display: none;">
+        <!-- Content for 'Academic Progress' tab goes here -->
+        <h2>Academic Progress</h2>
+        <p>Your academic progress for the current semester:</p>
+        <ul>
+            <li>Completed: 4 courses</li>
+            <li>In Progress: 2 courses</li>
+            <li>Remaining: 2 courses</li>
+            <li>GPA: 3.8</li>
+        </ul>
+    </div>
+    <div id="chatContent" style="display: block;">
+        <!-- Content for 'Advisor Chat Window' tab goes here -->
+        <div class="chat-container" id="chatContainer"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <div id="coursesContent" style="display: none;">
+        <!-- Content for 'Enrolled Courses' tab goes here -->
+        <h2>Enrolled Courses</h2>
+        <p>Your currently enrolled courses:</p>
+        <ul>
+            <li>Course 1: Introduction to Computer Science</li>
+            <li>Course 2: Calculus I</li>
+            <li>Course 3: English Composition</li>
+        </ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='student_dashboard.js') }}"></script>
 </body>
 </html>
