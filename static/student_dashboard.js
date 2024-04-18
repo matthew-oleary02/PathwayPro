@@ -21,10 +21,10 @@ function selectTab(tabName) {
 function displayMockChat() {
     var chatContainer = document.getElementById('chatContainer');
     var messages = [
-        "Hello, this is your advisor, Jane Smith. I was hoping to talk to you about your plan for the upcoming semester.",
-        "Hello Jane, I'm happy to talk to you about my plan. Is there anything specific that you had questions about?",
-        "Yes, I was wondering why you chose that religion course in particular. Other than that, the rest of the schedule looks good.",
-        "I mostly chose that religion course due to it fulfilling a lot of my Magis Core requirements, in addition to the topic seeming interesting to me."
+        "Hello Jane, this is your advisor, Lucy Anderson. I was hoping to talk to you about your plan for the upcoming semester.",
+        "Hello Lucy, I'm happy to talk to you about my plan. Is there anything specific that you had questions about?",
+        "Yes, I was wondering why you chose that Calculus I course in particular. Other than that, the rest of the schedule looks good.",
+        "I mostly chose that Calculus I course due to it fulfilling a lot of my Magis Core requirements, in addition to the topic seeming interesting to me."
     ];
 
     messages.forEach(function(message, index) {

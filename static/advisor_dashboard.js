@@ -25,10 +25,12 @@ function selectTab(tabName) {
 function displayMockChat() {
     var chatContainer = document.getElementById('chatContainer');
     var messages = [
-        "Hello, this is your advisor, Jane Smith. I was hoping to talk to you about your plan for the upcoming semester.",
-        "Hello Jane, I'm happy to talk to you about my plan. Is there anything specific that you had questions about?",
-        "Yes, I was wondering why you chose that religion course in particular. Other than that, the rest of the schedule looks good.",
-        "I mostly chose that religion course due to it fulfilling a lot of my Magis Core requirements, in addition to the topic seeming interesting to me."
+        "Hi Professor Anderson, this is Jane Margolis. I hope you're doing well. I wanted to reach out to discuss my plan for the upcoming semester.",
+        "Hello Jane! I'm glad you reached out. I was actually just thinking about your schedule. What's on your mind?",
+        "I'm glad to hear that! Well, I've been considering my options and I've chosen most of my courses, but I'm still uncertain about one of them.",
+        "I see. Which course are you unsure about?",
+        "It's the English Composition course. I chose it because it fulfills a lot of my Magis Core requirements, but I'm not entirely sure if it aligns with my interests or academic goals.",
+        "That's understandable. Have you looked into any alternative courses that might align better with your interests and goals?"
     ];
 
     messages.forEach(function(message, index) {
