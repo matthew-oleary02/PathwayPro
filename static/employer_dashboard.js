@@ -25,10 +25,10 @@ function selectTab(tabName) {
 function displayMockChat() {
     var chatContainer = document.getElementById('chatContainer');
     var messages = [
-        "Hello, this is John Smith from Big Job Marketing firm. I was hoping to talk to you about a possible job opportunity.",
-        "Hello John, I'm happy to hear from you about this possible opportunity.",
-        "If possible I would like to set up a Zoom meeting with you to discuss this opportunity further.",
-        "A Zoom meeting works for me, my email is Jane.Smith@student.fairfield.edu, I look forward to hearing from you."
+        "Hello Mr. Hamlin, this is Jane Margolis from Fairfield University. I was hoping to talk to you about a possible job opportunity.",
+        "Hello Jane, I'm happy to hear that you are interested in this potential opportunity.",
+        "If possible, I would like to set up a Zoom meeting with you to discuss this opportunity further.",
+        "A Zoom meeting works for me, my email is alexhamlin@bigjobmarketingfirm.com. I look forward to hearing from you."
     ];
 
     messages.forEach(function(message, index) {
