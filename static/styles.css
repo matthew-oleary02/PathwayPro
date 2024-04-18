@@ -75,3 +75,20 @@ footer {
   width: 100%;
   bottom: 0;
 }
+
+/* Styles for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #007bff;
+  color: #fff;
+}
