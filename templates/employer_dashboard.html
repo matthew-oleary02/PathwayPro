@@ -70,7 +70,22 @@
     </div>
     <div id="recruitedContent" style="display: none;">
         <!-- Content for 'Recruited Students List' tab goes here -->
-        <p>Content for Recruited Students List tab.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                </tr>
+            </thead>
+            <tbody id="studentList">
+                <tr>
+                    <td>John Smithwick</td>
+                </tr>
+                <tr>
+                    <td>Jane Margolis</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     </div>
     <script src="{{ url_for('static', filename='employer_dashboard.js') }}"></script>
 </body>
