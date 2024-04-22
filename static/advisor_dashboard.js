@@ -21,6 +21,12 @@ function selectTab(tabName) {
     selectedContent.style.display = 'block';
 }
 
+// Function to handle search button click
+function searchStudents() {
+    // Redirect to the advisor_studentlist route
+    window.location.href = '/advisor_studentlist';
+}
+
 // Function to display mock chat
 function displayMockChat() {
     var chatContainer = document.getElementById('chatContainer');

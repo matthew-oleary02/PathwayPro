@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
+import pyodbc
 
 app = Flask(__name__)
 
@@ -16,6 +17,13 @@ user_credentials = {
         'password': 'NAMAST3'
     }
 }
+
+# Configuration for your SQL Server
+SERVER = 'mattserver0219.database.windows.net'
+DATABASE = 'mattDB'
+USERNAME = 'mcoleary02'
+PASSWORD = 'Password123'
+DRIVER = '{ODBC Driver 17 for SQL Server}'
 
 @app.route('/')
 def index():
@@ -49,6 +57,35 @@ def student_dashboard():
 @app.route('/advisor_dashboard')
 def advisor_dashboard():
     return render_template('advisor_dashboard.html')
+
+@app.route('/advisor_studentlist')
+def advisor_studentlist():
+    try:
+        # Construct the connection string
+        conn_str = (
+            f'DRIVER={DRIVER};'
+            f'SERVER=tcp:{SERVER},1433;'
+            f'DATABASE={DATABASE};'
+            f'UID={USERNAME};'
+            f'PWD={PASSWORD}'
+        )
+
+        # Connect to SQL Server
+        conn = pyodbc.connect(conn_str)
+
+        cursor = conn.cursor()
+
+        # Example Query
+        cursor.execute("SELECT * FROM [dbo].[Students]")
+        students = cursor.fetchall()
+
+        # Close connection
+        conn.close()
+
+        # Render HTML template with data
+        return render_template('advisor_studentlist.html', students=students)
+    except pyodbc.Error as e:
+        return f"Error connecting to SQL Server: {e}"
 
 @app.route('/employer_dashboard')
 def employer_dashboard():
