@@ -21,6 +21,12 @@ function selectTab(tabName) {
     selectedContent.style.display = 'block';
 }
 
+// Function to handle search button click
+function searchStudents() {
+    // Redirect to the employer_studentlist route
+    window.location.href = '/employer_studentlist';
+}
+
 // Function to display mock chat
 function displayMockChat() {
     var chatContainer = document.getElementById('chatContainer');
@@ -53,4 +59,9 @@ function sendMessage() {
     displayMockChat();
     // Clear input after sending message
     document.getElementById('messageInput').value = '';
+}
+
+// Function to navigate to employer_recstu.html
+function viewRecruitedStudents() {
+    window.location.href = '/employer_recstu';
 }

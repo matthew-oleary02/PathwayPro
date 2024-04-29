@@ -62,3 +62,9 @@ function sendMessage() {
     // Clear input after sending message
     document.getElementById('messageInput').value = '';
 }
+
+// Function to show all appointments
+function showAllAppointments() {
+    // Logic to show all upcoming appointments
+    window.location.href = '/advisor_apptlist';
+}

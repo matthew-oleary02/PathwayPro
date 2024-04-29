@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Information</title>
+    <title>Advisor Appointment List</title>
     <style>
         /* Global Styles */
     body {
@@ -154,29 +154,25 @@
     </style>
 </head>
 <body>
-    <h1>Student Information</h1>
+    <h1>Advisor Appointment List</h1>
     <table>
         <thead>
             <tr>
-                <th>Student ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Date of Birth</th>
-                <th>Phone Number</th>
-                <th>University Name</th>
+                <th>Student First Name</th>
+                <th>Student Last Name</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
+                <th>Start Meeting</th>
             </tr>
         </thead>
         <tbody>
-            {% for student in students %}
+            {% for appointment in appointments %}
             <tr>
-                <td>{{ student.student_id }}</td>
-                <td>{{ student.first_name }}</td>
-                <td>{{ student.last_name }}</td>
-                <td>{{ student.email }}</td>
-                <td>{{ student.date_of_birth }}</td>
-                <td>{{ student.phone_number }}</td>
-                <td>{{ student.university_name }}</td>
+                <td>{{ appointment.student_first_name }}</td>
+                <td>{{ appointment.student_last_name }}</td>
+                <td>{{ appointment.appointment_date }}</td>
+                <td>{{ appointment.appointment_time }}</td>
+                <td><a href="#">Join Meeting</a></td>
             </tr>
             {% endfor %}
         </tbody>

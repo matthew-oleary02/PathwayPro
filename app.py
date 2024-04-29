@@ -54,9 +54,79 @@ def dashboard():
 def student_dashboard():
     return render_template('student_dashboard.html')
 
+@app.route('/student_courselist')
+def student_courselist():
+    try:
+        # Construct the connection string
+        conn_str = (
+            f'DRIVER={DRIVER};'
+            f'SERVER=tcp:{SERVER},1433;'
+            f'DATABASE={DATABASE};'
+            f'UID={USERNAME};'
+            f'PWD={PASSWORD}'
+        )
+
+        # Connect to SQL Server
+        conn = pyodbc.connect(conn_str)
+
+        cursor = conn.cursor()
+
+        # Example Query
+        cursor.execute("SELECT * FROM [dbo].[Courses]")
+        courses = cursor.fetchall()
+
+        # Close connection
+        conn.close()
+
+        # Render HTML template with data
+        return render_template('student_courselist.html', courses=courses)
+    except pyodbc.Error as e:
+        return f"Error connecting to SQL Server: {e}"
+
 @app.route('/advisor_dashboard')
 def advisor_dashboard():
     return render_template('advisor_dashboard.html')
+
+@app.route('/advisor_apptlist')
+def advisor_apptlist():
+    try:
+        # Construct the connection string
+        conn_str = (
+            f'DRIVER={DRIVER};'
+            f'SERVER=tcp:{SERVER},1433;'
+            f'DATABASE={DATABASE};'
+            f'UID={USERNAME};'
+            f'PWD={PASSWORD}'
+        )
+
+        # Connect to SQL Server
+        conn = pyodbc.connect(conn_str)
+
+        # Execute the SQL query
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT 
+                s.first_name AS student_first_name, 
+                s.last_name AS student_last_name, 
+                a.appointment_date, 
+                a.appointment_time
+            FROM 
+                Appointments a
+            INNER JOIN 
+                Students s ON a.student_id = s.student_id
+        """)
+        
+        # Fetch all rows from the query result
+        appointments = cursor.fetchall()
+
+        # Close connection
+        conn.close()
+
+        # Render the advisor_apptlist.html template with appointments data
+        return render_template('advisor_apptlist.html', appointments=appointments)
+    
+    except pyodbc.Error as e:
+        return f"Error connecting to SQL Server: {e}"
 
 @app.route('/advisor_studentlist')
 def advisor_studentlist():
@@ -90,6 +160,79 @@ def advisor_studentlist():
 @app.route('/employer_dashboard')
 def employer_dashboard():
     return render_template('employer_dashboard.html')
+
+@app.route('/employer_studentlist')
+def employer_studentlist():
+    try:
+        # Construct the connection string
+        conn_str = (
+            f'DRIVER={DRIVER};'
+            f'SERVER=tcp:{SERVER},1433;'
+            f'DATABASE={DATABASE};'
+            f'UID={USERNAME};'
+            f'PWD={PASSWORD}'
+        )
+
+        # Connect to SQL Server
+        conn = pyodbc.connect(conn_str)
+
+        cursor = conn.cursor()
+
+        # Example Query
+        cursor.execute("SELECT * FROM [dbo].[Students]")
+        students = cursor.fetchall()
+
+        # Close connection
+        conn.close()
+
+        # Render HTML template with data
+        return render_template('employer_studentlist.html', students=students)
+    except pyodbc.Error as e:
+        return f"Error connecting to SQL Server: {e}"
+
+@app.route('/employer_recstu')
+def employer_recstu():
+    try:
+        # Construct the connection string
+        conn_str = (
+            f'DRIVER={DRIVER};'
+            f'SERVER=tcp:{SERVER},1433;'
+            f'DATABASE={DATABASE};'
+            f'UID={USERNAME};'
+            f'PWD={PASSWORD}'
+        )
+
+        # Connect to SQL Server
+        conn = pyodbc.connect(conn_str)
+
+        # Execute the SQL query
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT
+                s.first_name,
+                s.last_name,
+                s.email,
+                s.phone_number,
+                s.university_name,
+                r.position,
+                r.application_status
+            FROM
+                Students s
+            INNER JOIN
+                Recruited_Students r ON s.student_id = r.student_id
+        """)
+        
+        # Fetch all rows from the query result
+        recruitments = cursor.fetchall()
+
+        # Close connection
+        conn.close()
+
+        # Render the employer_recstu.html template with recruitments data
+        return render_template('employer_recstu.html', recruitments=recruitments)
+    
+    except pyodbc.Error as e:
+        return f"Error connecting to SQL Server: {e}"
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -52,3 +52,9 @@ function sendMessage() {
     // Clear input after sending message
     document.getElementById('messageInput').value = '';
 }
+
+// Function to show all courses
+function showAllCourses() {
+    // Redirect to the student_courselist route
+    window.location.href = '/student_courselist';
+}

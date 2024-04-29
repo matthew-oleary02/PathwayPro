@@ -1,15 +1,29 @@
+
+/* Header Styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%; /* Ensure the header extends the entire width */
+}
+
+.header h1 {
+    margin: 0;
+}
+
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
-    padding: 20px;
-    text-align: center;
+    padding: 0;
 }
 
 h1 {
-    color: #333;
+    color: #fff; /* Ensure the h1 text color contrasts with the header background */
 }
+
 
 /* Tab Styles */
 .tab-container {
@@ -32,6 +46,7 @@ h1 {
     color: #333;
     border-radius: 5px 5px 0 0;
     transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center; /* Center the text */
 }
 
 .tab.active {
@@ -120,26 +135,60 @@ h1 {
     border-color: #007bff;
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-    .tab-container {
-        width: 90%;
-    }
-}
-
 /* Styles for the table */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-  }
-  
-  th, td {
+}
+
+th, td {
     border: 1px solid #ddd;
     padding: 8px;
-  }
-  
-  th {
+}
+
+th {
     background-color: #007bff;
     color: #fff;
-  }
+}
+
+/* Additional Styles */
+.center-content {
+    text-align: center;
+}
+
+
+/* Center the button */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block; /* Ensure the button is displayed as a block element */
+}
+
+/* Center the button */
+@media screen and (max-width: 768px) {
+    .button-container {
+        width: 90%; /* Adjust width for smaller screens */
+        margin: 20px auto; /* Center the button horizontally */
+    }
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    left: 0; /* Ensure the footer starts from the left edge */
+    bottom: 0;
+}

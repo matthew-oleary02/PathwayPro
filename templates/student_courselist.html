@@ -154,29 +154,27 @@
     </style>
 </head>
 <body>
-    <h1>Student Information</h1>
+    <h1>My Course List</h1>
     <table>
         <thead>
             <tr>
-                <th>Student ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Date of Birth</th>
-                <th>Phone Number</th>
-                <th>University Name</th>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Instructor ID</th>
+                <th>Description</th>
+                <th>Schedule</th>
+                <th>Location</th>
             </tr>
         </thead>
         <tbody>
-            {% for student in students %}
+            {% for course in courses %}
             <tr>
-                <td>{{ student.student_id }}</td>
-                <td>{{ student.first_name }}</td>
-                <td>{{ student.last_name }}</td>
-                <td>{{ student.email }}</td>
-                <td>{{ student.date_of_birth }}</td>
-                <td>{{ student.phone_number }}</td>
-                <td>{{ student.university_name }}</td>
+                <td>{{ course.course_id }}</td>
+                <td>{{ course.course_name }}</td>
+                <td>{{ course.instructor_id }}</td>
+                <td>{{ course.description }}</td>
+                <td>{{ course.schedule }}</td>
+                <td>{{ course.location }}</td>
             </tr>
             {% endfor %}
         </tbody>

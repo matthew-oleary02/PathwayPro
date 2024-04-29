@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='support_dashboard.css') }}">
 </head>
 <body>
-    <h1>Welcome, Advisor!</h1>
+    <header class="header">
+        <h1>Welcome, Advisor!</h1>
+    </header>
 
     <div class="tab-container">
         <div class="tab" onclick="selectTab('search')" data-tab="search">Search for Students</div>
@@ -74,29 +76,38 @@
         <table>
             <thead>
                 <tr>
-                    <th>Student Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Start Meeting</th>
                 </tr>
             </thead>
             <tbody id="appointmentList">
+                <!-- Appointment list content -->
                 <tr>
-                    <td>John Smithwick</td>
+                    <td>John</td>
+                    <td>Dhole</td>
                     <td>2024-04-20</td>
                     <td>10:00 AM</td>
                     <td><a href="#">Meeting Link</a></td>
                 </tr>
                 <tr>
-                    <td>Jane Margolis</td>
+                    <td>Jane</td>
+                    <td>Margolis</td>
                     <td>2024-04-22</td>
                     <td>2:30 PM</td>
                     <td><a href="#">Meeting Link</a></td>
                 </tr>
             </tbody>
         </table>
+        <div class="button-container">
+            <button onclick="showAllAppointments()">Show All Appointments</button>
+        </div>
     </div>
-
+    <footer>
+        <h3>PathwayPro v0.1</h3>
+    </footer>
     <script src="{{ url_for('static', filename='advisor_dashboard.js') }}"></script>
 </body>
 </html>
